@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.viaversion:viarewind-sponge:2.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-sponge/2.0.2-SNAPSHOT/viarewind-sponge-2.0.2-20210725.075111-112.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-sponge/2.0.2-SNAPSHOT/viarewind-sponge-2.0.2-20210725.075111-112-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-sponge/2.0.2-SNAPSHOT/viarewind-sponge-2.0.2-20210725.075111-112-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

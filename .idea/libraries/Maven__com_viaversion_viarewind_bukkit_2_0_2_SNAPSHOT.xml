@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: com.viaversion:viarewind-bukkit:2.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-bukkit/2.0.2-SNAPSHOT/viarewind-bukkit-2.0.2-20210724.142108-110.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-bukkit/2.0.2-SNAPSHOT/viarewind-bukkit-2.0.2-20210724.142108-110-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/viaversion/viarewind-bukkit/2.0.2-SNAPSHOT/viarewind-bukkit-2.0.2-20210724.142108-110-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
