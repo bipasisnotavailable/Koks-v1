@@ -5,7 +5,7 @@ import koks.event.Event;
 import koks.event.impl.AnimationEvent;
 import koks.event.impl.EventUpdate;
 import koks.modules.Module;
-import koks.modules.impl.combat.KillAura;
+import koks.modules.impl.combat.Aura;
 import koks.modules.impl.visuals.Animations;
 import koks.modules.impl.world.BlockFlight;
 import koks.utilities.value.values.ModeValue;
@@ -61,7 +61,7 @@ public class Sprint extends Module {
 
     public boolean canSprint() {
         BlockFlight scaffoldWalk = Koks.getKoks().moduleManager.getModule(BlockFlight.class);
-        KillAura killAura = Koks.getKoks().moduleManager.getModule(KillAura.class);
+        Aura killAura = Koks.getKoks().moduleManager.getModule(Aura.class);
         if (scaffoldWalk.isToggled() && !(scaffoldWalk.sprint.isToggled()))
             return false;
         if (killAura.isToggled() && killAura.finalEntity != null && killAura.stopSprinting.isToggled())

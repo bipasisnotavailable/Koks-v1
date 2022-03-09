@@ -18,27 +18,22 @@ import net.minecraft.entity.monster.EntityMob;
 import net.minecraft.entity.passive.EntityAnimal;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import net.minecraft.network.play.client.C02PacketUseEntity;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.*;
 import org.lwjgl.opengl.GL11;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
 
 /**
  * @author avox | lmao | kroko
  * @created on 03.09.2020 : 21:08
  */
-public class KillAura extends Module {
+public class Aura extends Module {
 
     public BooleanValue<Boolean> player = new BooleanValue<>("Player", true, this);
     public BooleanValue<Boolean> animals = new BooleanValue<>("Animals", false, this);
@@ -97,8 +92,8 @@ public class KillAura extends Module {
     public float yaw, pitch, animation;
     public int listCount, finalCPS, shouldCPS;
 
-    public KillAura() {
-        super("KillAura", "Destroy all on the world.", Category.COMBAT);
+    public Aura() {
+        super("Aura", "Destroy all on the world.", Category.COMBAT);
 
         addValue(targetSettings);
         addValue(targets);

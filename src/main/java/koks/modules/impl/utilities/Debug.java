@@ -1,31 +1,14 @@
 package koks.modules.impl.utilities;
 
-import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import koks.Koks;
 import koks.event.Event;
-import koks.event.impl.EventMove;
 import koks.event.impl.EventUpdate;
-import koks.event.impl.MotionEvent;
-import koks.event.impl.PacketEvent;
 import koks.modules.Module;
-import koks.modules.impl.combat.KillAura;
-import koks.utilities.MovementUtil;
 import koks.utilities.value.Value;
 import koks.utilities.value.values.BooleanValue;
 import koks.utilities.value.values.ModeValue;
 import koks.utilities.value.values.NumberValue;
 import koks.utilities.value.values.TitleValue;
-import net.minecraft.client.Minecraft;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.network.Packet;
-import net.minecraft.network.PacketBuffer;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C17PacketCustomPayload;
-import net.minecraft.network.play.server.*;
-import net.minecraft.util.ChatComponentText;
-import org.lwjgl.Sys;
 
 /**
  * @author avox | lmao | kroko

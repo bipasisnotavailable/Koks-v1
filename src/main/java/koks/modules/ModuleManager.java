@@ -22,10 +22,10 @@ public class ModuleManager {
 
     public ModuleManager() {
         // Combat
-        addModule(new KillAura(), false);
+        addModule(new Aura(), false);
         addModule(new SuperHit(), false);
         addModule(new Velocity(), false);
-        addModule(new LangeArme(), true);
+        addModule(new longarms(), true);
         addModule(new TriggerBot(), true);
 
         // Movement

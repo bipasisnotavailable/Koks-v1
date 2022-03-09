@@ -5,9 +5,8 @@ import koks.event.Event;
 import koks.event.impl.EventMove;
 import koks.event.impl.MotionEvent;
 import koks.modules.Module;
-import koks.modules.impl.combat.KillAura;
+import koks.modules.impl.combat.Aura;
 import koks.utilities.MovementUtil;
-import net.minecraft.entity.Entity;
 
 /**
  * @author avox | lmao | kroko
@@ -47,13 +46,13 @@ public class TargetStrafe extends Module {
         if (event instanceof EventMove) {
             if (allowStrafing()) {
                 mc.thePlayer.setSprinting(true);
-                if (mc.thePlayer.getDistanceToEntity(Koks.getKoks().moduleManager.getModule(KillAura.class).finalEntity) <= 0) {
-                    movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(KillAura.class).yaw, false, true, direction == 0, direction == 1);
+                if (mc.thePlayer.getDistanceToEntity(Koks.getKoks().moduleManager.getModule(Aura.class).finalEntity) <= 0) {
+                    movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(Aura.class).yaw, false, true, direction == 0, direction == 1);
                 } else {
-                    if (mc.thePlayer.getDistanceToEntity(Koks.getKoks().moduleManager.getModule(KillAura.class).finalEntity) >= 1) {
-                        movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(KillAura.class).yaw, true, false, direction == 0, direction == 1);
+                    if (mc.thePlayer.getDistanceToEntity(Koks.getKoks().moduleManager.getModule(Aura.class).finalEntity) >= 1) {
+                        movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(Aura.class).yaw, true, false, direction == 0, direction == 1);
                     } else {
-                        movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(KillAura.class).yaw, false, false, direction == 0, direction == 1);
+                        movementUtil.setSpeedEvent(speed, Koks.getKoks().moduleManager.getModule(Aura.class).yaw, false, false, direction == 0, direction == 1);
                     }
                 }
             }
@@ -66,7 +65,7 @@ public class TargetStrafe extends Module {
     }
 
     public boolean allowStrafing() {
-        return Koks.getKoks().moduleManager.getModule(KillAura.class).finalEntity != null && isToggled();
+        return Koks.getKoks().moduleManager.getModule(Aura.class).finalEntity != null && isToggled();
     }
 
     @Override

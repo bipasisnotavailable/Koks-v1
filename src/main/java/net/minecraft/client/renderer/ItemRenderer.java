@@ -2,8 +2,7 @@ package net.minecraft.client.renderer;
 
 import koks.Koks;
 import koks.event.impl.EventItemRenderer;
-import koks.event.impl.EventUpdate;
-import koks.modules.impl.combat.KillAura;
+import koks.modules.impl.combat.Aura;
 import koks.modules.impl.visuals.HitAnimation;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -345,7 +344,7 @@ public class ItemRenderer
         EventItemRenderer eventItemRenderer = new EventItemRenderer(f, f1);
         Koks.getKoks().eventManager.onEvent(eventItemRenderer);
 
-        KillAura killAura = Koks.getKoks().moduleManager.getModule(KillAura.class);
+        Aura killAura = Koks.getKoks().moduleManager.getModule(Aura.class);
 
         if (this.itemToRender != null)
         {

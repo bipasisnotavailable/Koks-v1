@@ -3,7 +3,6 @@ package koks.gui.clickgui;
 import koks.Koks;
 import koks.gui.clickgui.elements.*;
 import koks.modules.Module;
-import koks.modules.impl.combat.KillAura;
 import koks.utilities.ColorUtil;
 import koks.utilities.RenderUtils;
 import koks.utilities.value.values.BooleanValue;

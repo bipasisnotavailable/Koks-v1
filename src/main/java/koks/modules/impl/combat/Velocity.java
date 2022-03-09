@@ -11,7 +11,6 @@ import koks.utilities.value.values.ModeValue;
 import koks.utilities.value.values.NumberValue;
 import net.minecraft.network.play.server.S12PacketEntityVelocity;
 import net.minecraft.network.play.server.S27PacketExplosion;
-import org.lwjgl.Sys;
 
 /**
  * @author avox | lmao | kroko
@@ -131,7 +130,7 @@ public class Velocity extends Module {
                     }
                     break;
                 case "Intave":
-                    KillAura killaura = Koks.getKoks().moduleManager.getModule(KillAura.class);
+                    Aura killaura = Koks.getKoks().moduleManager.getModule(Aura.class);
                     if (mc.thePlayer.hurtTime == 9 || mc.thePlayer.hurtTime == 10) {
                         if (mc.thePlayer.onGround)
                             mc.thePlayer.jump();
