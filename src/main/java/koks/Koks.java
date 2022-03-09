@@ -73,7 +73,7 @@ public class Koks {
         for(String author : CLIENT_DEVELOPER) {
             joiner.add(author);
         }
-        Display.setTitle(CLIENT_NAME + " v" + CLIENT_VERSION + " by " + joiner + " | Based on Koks");
+        Display.setTitle(CLIENT_NAME + " " + CLIENT_VERSION + " by " + joiner + " | Based on Koks");
         valueManager = new ValueManager();
         valueHUDManager = new ValueHUDManager();
         commonValueManager = new CommonValueManager();
