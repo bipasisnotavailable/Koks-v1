@@ -25,7 +25,7 @@ public class ModuleManager {
         addModule(new Aura(), false);
         addModule(new SuperHit(), false);
         addModule(new Velocity(), false);
-        addModule(new longarms(), true);
+        addModule(new LongArms(), true);
         addModule(new TriggerBot(), true);
 
         // Movement

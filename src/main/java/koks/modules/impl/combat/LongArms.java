@@ -10,12 +10,12 @@ import koks.utilities.value.values.NumberValue;
  * @author avox | lmao | kroko
  * @created on 06.09.2020 : 11:09
  */
-public class longarms extends Module {
+public class LongArms extends Module {
 
     public NumberValue<Double> reach = new NumberValue<>("Extra Reach", 0.2D, 1D, 0D, this);
 
-    public longarms() {
-        super("longarms", "", Category.COMBAT);
+    public LongArms() {
+        super("LongArms", "", Category.COMBAT);
         addValue(reach);
     }
 
