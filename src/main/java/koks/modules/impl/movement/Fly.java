@@ -35,14 +35,16 @@ public class Fly extends Module {
     private final ArrayList<Packet> packets = new ArrayList<>();
     private int stage;
     private int glidedelay;
+    private int matrixmotion;
+    private int matrixtick;
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
-        super("Fly", "You are very fliegen", Category.MOVEMENT);
+        super("Fly", "You are very fliegen brr", Category.MOVEMENT);
         addValue(aac322boost);
         Koks.getKoks().valueManager.addValue(modeValue);
         hypixelFly = new HypixelFly();
@@ -70,6 +72,9 @@ public class Fly extends Module {
                     break;
                 case "MCCentral 2":
                     mccentral2();
+                    break;
+                case "Matrix":
+                    matrix();
                     break;
             }
         }
@@ -109,17 +114,17 @@ public class Fly extends Module {
 
     public void mccentral() {
         System.out.println(mc.thePlayer.fallDistance);
-            mc.thePlayer.motionY = 0;
+        mc.thePlayer.motionY = 0;
 
-            MovementUtil movementUtil = new MovementUtil();
-            if(mc.gameSettings.keyBindBack.pressed || mc.gameSettings.keyBindForward.pressed) {
-                movementUtil.setSpeed(1.5F);
-            }
-            if(mc.gameSettings.keyBindJump.pressed) {
-                mc.thePlayer.motionY += 0.1;
-            }
-            if(mc.gameSettings.keyBindSneak.pressed) {
-                mc.thePlayer.motionY -= 0.1;
+        MovementUtil movementUtil = new MovementUtil();
+        if(mc.gameSettings.keyBindBack.pressed || mc.gameSettings.keyBindForward.pressed) {
+            movementUtil.setSpeed(1.5F);
+        }
+        if(mc.gameSettings.keyBindJump.pressed) {
+            mc.thePlayer.motionY += 0.1;
+        }
+        if(mc.gameSettings.keyBindSneak.pressed) {
+            mc.thePlayer.motionY -= 0.1;
 
         }
     }
@@ -142,6 +147,16 @@ public class Fly extends Module {
         double addY = new RandomUtil().randomDouble(-0.05, 0.10);
 
         mc.thePlayer.motionY += addY;
+    }
+
+    public void matrix() {
+        if (mc.thePlayer.fallDistance>0) {
+            mc.timer.timerSpeed = 0.5;
+            if (mc.thePlayer.ticksExisted % 3 == 0) {
+                mc.thePlayer.motionY = -0.005;
+                matrixmotion--;
+            }
+        }
     }
 
     public void aac322() {
@@ -168,6 +183,13 @@ public class Fly extends Module {
                 break;
             case "Minemora":
                 mc.timer.timerSpeed = 0.7;
+                break;
+            case "Matrix":
+                matrixmotion = 6;
+                if (mc.thePlayer.onGround)
+                    mc.thePlayer.jump();
+                matrixtick = 0;
+                break;
         }
     }
 
@@ -192,6 +214,9 @@ public class Fly extends Module {
                 mc.timer.timerSpeed = 1.0;
                 mc.thePlayer.motionX = 0;
                 mc.thePlayer.motionZ = 0;
+                break;
+            case "Matrix":
+                mc.timer.timerSpeed = 1;
                 break;
         }
     }
