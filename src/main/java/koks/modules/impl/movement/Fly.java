@@ -34,10 +34,11 @@ public class Fly extends Module {
 
     private final ArrayList<Packet> packets = new ArrayList<>();
     private int stage;
+    private int glidedelay;
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "AAC3.2.2", "Faithful", "MCCentral", "MCCentral 2"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
@@ -61,8 +62,8 @@ public class Fly extends Module {
                 case "AAC3.2.2":
                     aac322();
                     break;
-                case "Faithful":
-                    faithful();
+                case "Minemora":
+                    minemora();
                     break;
                 case "MCCentral":
                     mccentral();
@@ -95,22 +96,15 @@ public class Fly extends Module {
         }
     }
 
-    public void faithful() {
-        if (timeUtil.hasReached(50)) {
-            timeUtil.reset();
+    public void minemora() {
+        glidedelay++;
+        if(glidedelay >= 4) {
+            glidedelay = 0;
+            mc.thePlayer.motionY = 0.015;
+        } else {
+            mc.thePlayer.motionY = -0.0784;
         }
 
-        for (int i = 0; i < 5; i++)
-            mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
-        mc.thePlayer.motionY = 0;
-        mc.timer.timerSpeed = 0.02;
-        BlockPos pos = new BlockPos(mc.thePlayer.posX, mc.thePlayer.posY - 1, mc.thePlayer.posZ);
-        mc.playerController.onPlayerRightClick(mc.thePlayer, mc.theWorld, null, pos, EnumFacing.UP, new Vec3((pos.getX() + 0.4) * 0.4, (pos.getY() + 0.4) * 0.4, (pos.getZ() + 0.4) * 0.4));
-        mc.thePlayer.capabilities.setFlySpeed(2.0F);
-        mc.thePlayer.capabilities.isFlying = true;
-        if (mc.thePlayer.moveForward != 0) {
-            movementUtil.setSpeed(5.0);
-        }
     }
 
     public void mccentral() {
@@ -166,11 +160,14 @@ public class Fly extends Module {
     @Override
     public void onEnable() {
         stage = 0;
+        glidedelay = 0;
         timeUtil.reset();
         switch (modeValue.getSelectedMode()) {
             case "Hypixel":
                 hypixelFly.onEnable();
                 break;
+            case "Minemora":
+                mc.timer.timerSpeed = 0.7;
         }
     }
 
@@ -187,17 +184,8 @@ public class Fly extends Module {
                 mc.timer.timerSpeed = 1F;
                 mc.rightClickDelayTimer = 6;
                 break;
-            case "Faithful":
+            case "Minemora":
                 mc.timer.timerSpeed = 1.0;
-                mc.thePlayer.capabilities.setFlySpeed(0.1F);
-                mc.thePlayer.capabilities.isFlying = false;
-                mc.thePlayer.motionX = 0;
-                mc.thePlayer.motionY = 0.1;
-                mc.thePlayer.motionZ = 0;
-                for (int i = 0; i < 50; i++)
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer(true));
-/*                packets.forEach(mc.thePlayer.sendQueue.getNetworkManager()::sendPacket);
-                packets.clear();*/
                 break;
             case "MCCentral 2":
                 mc.thePlayer.speedInAir = 0.02F;
