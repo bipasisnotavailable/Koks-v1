@@ -14,17 +14,17 @@ import net.minecraft.inventory.ContainerChest;
  * @author avox | lmao | kroko
  * @created on 05.09.2020 : 01:24
  */
-public class ChestStealer extends Module {
+public class Stealer extends Module {
 
     public NumberValue<Long> startDelay = new NumberValue<>("Start Delay", 100L, 500L, 0L, this);
     public NumberValue<Long> takeDelay = new NumberValue<>("Take Delay", 90L, 125L, 150L, 0L, this);
     private final RandomUtil randomUtil = new RandomUtil();
     private final TimeUtil startTimer = new TimeUtil();
     private final TimeUtil throwTimer = new TimeUtil();
-    private InventoryManager inventoryManager;
+    private Manager Manager;
 
-    public ChestStealer() {
-        super("ChestStealer", "You steal the items from a chest", Category.PLAYER);
+    public Stealer() {
+        super("Stealer", "You steal the items from a chest", Category.PLAYER);
 
         addValue(startDelay);
         addValue(takeDelay);
@@ -40,7 +40,7 @@ public class ChestStealer extends Module {
                 ContainerChest chest = (ContainerChest) mc.thePlayer.openContainer;
                 boolean empty = true;
                 for (int i = 0; i < chest.getLowerChestInventory().getSizeInventory(); i++) {
-                    if (chest.getSlot(i).getHasStack() && chest.getSlot(i).getStack() != null && !inventoryManager.trashItems.contains(chest.getSlot(i).getStack().getItem())) {
+                    if (chest.getSlot(i).getHasStack() && chest.getSlot(i).getStack() != null && !Manager.trashItems.contains(chest.getSlot(i).getStack().getItem())) {
                         if (throwTimer.hasReached(randomUtil.randomLong(takeDelay.getMinDefaultValue(), takeDelay.getDefaultValue()))) {
                             mc.playerController.windowClick(chest.windowId, i, 0, 1, mc.thePlayer);
                             throwTimer.reset();
@@ -60,7 +60,7 @@ public class ChestStealer extends Module {
 
     @Override
     public void onEnable() {
-        inventoryManager = Koks.getKoks().moduleManager.getModule(InventoryManager.class);
+        Manager = Koks.getKoks().moduleManager.getModule(Manager.class);
     }
 
     @Override

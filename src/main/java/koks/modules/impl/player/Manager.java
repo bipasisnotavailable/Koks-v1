@@ -13,10 +13,7 @@ import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Items;
 import net.minecraft.item.*;
-import net.minecraft.util.ChatComponentText;
 
-import java.sql.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -24,7 +21,7 @@ import java.util.List;
  * @author avox | lmao | kroko
  * @created on 05.09.2020 : 00:18
  */
-public class InventoryManager extends Module {
+public class Manager extends Module {
 
     public List<Item> trashItems;
     public BooleanValue<Boolean> openedInventory = new BooleanValue<>("Opened Inventory", true, this);
@@ -42,8 +39,8 @@ public class InventoryManager extends Module {
     private final TimeUtil startTimer = new TimeUtil();
     private final TimeUtil throwTimer = new TimeUtil();
 
-    public InventoryManager() {
-        super("InventoryManager", "Your inventory is clean", Category.PLAYER);
+    public Manager() {
+        super("Manager", "Your inventory is clean", Category.PLAYER);
 
         trashItems = Arrays.asList(Items.feather, Items.dye, Items.paper, Items.saddle, Items.string, Items.banner, Items.fishing_rod, Items.boat);
         addValue(openedInventory);
