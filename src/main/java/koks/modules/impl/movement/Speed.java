@@ -13,8 +13,7 @@ import net.minecraft.item.ItemSword;
  * @created on 02.09.2020 : 21:15
  */
 public class Speed extends Module {
-
-    public ModeValue<String> mode = new ModeValue<>("Mode", "Mineplex", new String[]{"Mineplex", "AAC 3.2.2", "Hypixel", "MCCentral"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "Mineplex", new String[]{"Mineplex", "AAC 3.2.2", "Hypixel", "MCCentral", "Minemora"}, this);
     public boolean canSpeed;
     public MovementUtil movementUtil = new MovementUtil();
     public TargetStrafe targetStrafe = new TargetStrafe();
@@ -91,6 +90,14 @@ public class Speed extends Module {
                     }
                     movementUtil.setSpeed(0.45F);
                     break;
+                case "Minemora":
+                    if (mc.gameSettings.keyBindForward.isKeyDown()) {
+                        if (mc.thePlayer.onGround) {
+                            mc.thePlayer.jump();
+                            movementUtil.setSpeed(0.42F);
+                        }
+                        break;
+                    }
             }
         }
     }

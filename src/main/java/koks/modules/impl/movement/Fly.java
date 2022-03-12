@@ -102,14 +102,22 @@ public class Fly extends Module {
     }
 
     public void minemora() {
-        glidedelay++;
-        if(glidedelay >= 4) {
-            glidedelay = 0;
-            mc.thePlayer.motionY = 0.015;
+        if(mc.thePlayer.fallDistance>0){
+            mc.timer.timerSpeed = 0.7;
         } else {
-            mc.thePlayer.motionY = -0.0784;
+            mc.timer.timerSpeed = 1;
         }
-
+        if(mc.thePlayer.onGround){
+            mc.thePlayer.jump();
+        } else if (mc.thePlayer.fallDistance>0) {
+            glidedelay++;
+            if (glidedelay >= 4) {
+                glidedelay = 0;
+                mc.thePlayer.motionY = 0.015;
+            } else {
+                mc.thePlayer.motionY = -0.0784;
+            }
+        }
     }
 
     public void mccentral() {
@@ -182,7 +190,6 @@ public class Fly extends Module {
                 hypixelFly.onEnable();
                 break;
             case "Minemora":
-                mc.timer.timerSpeed = 0.7;
                 break;
             case "Matrix":
                 matrixmotion = 6;
