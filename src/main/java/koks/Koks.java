@@ -40,7 +40,7 @@ public class Koks {
     }
 
     public final String CLIENT_NAME = "bipas";
-    public final String[] CLIENT_DEVELOPER = new String[] {"bipas", "Davit", "zet99x"};
+    public final String[] CLIENT_DEVELOPER = new String[] {"bipas", "R3L4Y", "zet99x"};
     public final String CLIENT_VERSION = "1.0.0";
     public final String PREFIX = "§c" + CLIENT_NAME + " §7>> §f";
     public boolean playingSound = false;
