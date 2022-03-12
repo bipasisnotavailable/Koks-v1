@@ -51,8 +51,8 @@ public class ModuleManager {
         addModule(new Phase(), false);
         addModule(new SetBack(), false);
         addModule(new NoRotate(), false);
-        addModule(new InventoryManager(), true);
-        addModule(new ChestStealer(), true);
+        addModule(new Manager(), true);
+        addModule(new Stealer(), true);
         addModule(new AntiVoid(), false);
         addModule(new AutoArmor(), true);
         addModule(new Blink(), true);
