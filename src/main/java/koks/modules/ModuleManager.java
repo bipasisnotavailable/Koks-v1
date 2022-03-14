@@ -27,6 +27,7 @@ public class ModuleManager {
         addModule(new Velocity(), false);
         addModule(new LongArms(), true);
         addModule(new TriggerBot(), true);
+        addModule(new Insults(), true );
 
         // Movement
         addModule(new BoatFly(), false);
