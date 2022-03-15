@@ -67,6 +67,7 @@ public class ModuleManager {
         addModule(new CustomBlock(), true);
         addModule(new AntiFlag(), true);
         addModule(new ShopSaver(), false);
+        addModule(new AutoPlay(), false);
 
         // Visuals
         addModule(new Ambiance(), true);
