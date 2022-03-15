@@ -29,6 +29,7 @@ import java.util.StringJoiner;
  */
 public class Koks {
 
+    //i love sex - r3l4y
     private static final Koks KOKS;
 
     static {
