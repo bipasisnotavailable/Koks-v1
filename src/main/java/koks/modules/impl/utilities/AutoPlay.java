@@ -14,8 +14,8 @@ public class AutoPlay extends Module {
         super("AutoPlay", "AutoPlay", Category.UTILITIES);
     }
     private Packet packet;
-
-
+    private int delay;
+    private boolean readytojoin;
 
     @Override
     public void onEvent(Event event) {
@@ -25,13 +25,22 @@ public class AutoPlay extends Module {
             final S02PacketChat s02PacketChat = (S02PacketChat)packet;
             final String cp21 = s02PacketChat.getChatComponent().getUnformattedText();
             if ((cp21.contains("Has click en alguna de las siguientes opciones"))) {
+                readytojoin = true;
+            }
+            if (readytojoin = true) {
+                delay++;
+            }
+            if (delay >= 100) {
                 mc.thePlayer.sendChatMessage("/join");
+                readytojoin = false;
+                delay = 0;
             }
         }
     }
     @Override
     public void onEnable() {
-
+    delay = 0;
+    readytojoin = false;
     }
 
     @Override

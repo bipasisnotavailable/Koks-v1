@@ -91,7 +91,7 @@ extends GuiScreen {
         drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(65, 65, 65, 255).getRGB());
         int var3 = height / 4 + 24;
         this.buttonList.add(new GuiButton(0, width / 2 - 100, var3 + 72 + 12, "Login"));
-        this.buttonList.add(new GuiButton(201, width / 2 - 100, var3 + 72 + 12 + 48, "BipasGen (generate cracked)"));
+        this.buttonList.add(new GuiButton(201, width / 2 - 100, var3 + 72 + 12 + 48, "BipasGen (paid gen)"));
         //this.buttonList.add(new GuiButton(57840, width / 2 - 100, var3 + 72 + 12 + 72, "Buy Alts"));
         this.buttonList.add(new GuiButton(1, width / 2 - 100, var3 + 72 + 12 + 96, "Back"));
         this.username = new GuiTextField(var3, this.mc.fontRendererObj, width / 2 - 100, 60, 200, 20);
