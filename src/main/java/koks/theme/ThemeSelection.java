@@ -6,6 +6,7 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.util.ResourceLocation;
 import org.lwjgl.Sys;
 
 import java.awt.*;
@@ -40,7 +41,7 @@ public class ThemeSelection extends GuiScreen {
     @Override
     public void drawScreen(int mouseX, int mouseY, float partialTicks) {
         ScaledResolution scaledResolution = new ScaledResolution(Minecraft.getMinecraft());
-        drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(65, 65, 65, 255).getRGB());
+        drawRect(0, 0, scaledResolution.getScaledWidth(), scaledResolution.getScaledHeight(), new Color(0, 0, 0, 255).getRGB());
         Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(koks.getThemeCategory().name(), scaledResolution.getScaledWidth() / 2 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(koks
                 .getThemeCategory().name()) / 2, 15, -1);
         super.drawScreen(mouseX, mouseY, partialTicks);

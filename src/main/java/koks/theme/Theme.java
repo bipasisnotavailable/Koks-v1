@@ -91,8 +91,8 @@ public abstract class Theme {
     }
 
     public enum ThemeCategory {
-        JELLO,
         MOON,
+        JELLO,
         GAL,
         CLIENTUS,
         KLIENTUS,

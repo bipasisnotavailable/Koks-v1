@@ -24,6 +24,7 @@ import com.thealtening.AltService;
 import koks.ClientSwitch;
 import koks.Koks;
 import koks.account.Account;
+import koks.alt.GuiAltLogin;
 import koks.theme.ThemeSelection;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.ISound;
@@ -82,7 +83,7 @@ public class MainMenu extends GuiScreen {
 
         this.drawGradientRect(0, height - 100, width, height, 0x00000000, 0xff000000);
 
-        String[] buttons = {"Singleplayer", "Multiplayer", "Settings", "Quit"};
+        String[] buttons = {"Singleplayer", "Multiplayer", "Altmanager", "Themes", "Settings", "Quit"};
 
         int count = 0;
         for (String button : buttons) {
@@ -105,7 +106,7 @@ public class MainMenu extends GuiScreen {
 
 
     protected void mouseClicked(int mouseX, int mouseY, int mouseButton) throws IOException {
-        String[] buttons = {"Singleplayer", "Multiplayer", "Settings", "Quit"};
+        String[] buttons = {"Singleplayer", "Multiplayer", "Altmanager", "Themes","Settings", "Quit"};
 
         int count = 0;
         for (String button : buttons) {
@@ -118,6 +119,12 @@ public class MainMenu extends GuiScreen {
                         break;
                     case "Multiplayer":
                         mc.displayGuiScreen(new GuiMultiplayer(this));
+                        break;
+                    case "Altmanager":
+                        mc.displayGuiScreen(new GuiAltLogin(this));
+                        break;
+                    case "Themes":
+                        this.mc.displayGuiScreen(new ThemeSelection());
                         break;
                     case "Settings":
                         mc.displayGuiScreen(new GuiOptions(this, mc.gameSettings));

@@ -14,8 +14,8 @@ public class ThemeManager {
     private final List<Theme> themeList = new ArrayList<>();
 
     public ThemeManager() {
-        addTheme(new Jello());
         addTheme(new Moon());
+        addTheme(new Jello());
         addTheme(new GAL());
         addTheme(new Clientus());
         addTheme(new Klientus());
