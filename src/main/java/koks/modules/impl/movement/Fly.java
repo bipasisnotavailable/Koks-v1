@@ -40,7 +40,7 @@ public class Fly extends Module {
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
@@ -78,6 +78,9 @@ public class Fly extends Module {
                     break;
                 case "NCPiston":
                     NCPiston();
+                    break;
+                case "Verus":
+                    verus();
                     break;
             }
         }
@@ -138,6 +141,12 @@ public class Fly extends Module {
             mc.thePlayer.motionY -= 0.1;
 
         }
+    }
+
+    public void verus() {
+        mc.thePlayer.onGround = true;
+        mc.thePlayer.motionY = 0;
+        mc.timer.timerSpeed = 1.0f;
     }
 
     public void mccentral2() {
