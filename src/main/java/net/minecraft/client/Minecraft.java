@@ -41,6 +41,7 @@ import koks.event.impl.EventTick;
 import koks.event.impl.KeyBindEvent;
 import koks.event.impl.KeyPressEvent;
 import koks.gui.mainmenu.MainMenu;
+import koks.gui.mainmenu.NewMainMenu;
 import koks.modules.Module;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -571,11 +572,11 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         if (this.serverName != null)
         {
-            this.displayGuiScreen(new GuiConnecting(new MainMenu(), this, this.serverName, this.serverPort));
+            this.displayGuiScreen(new GuiConnecting(new NewMainMenu(), this, this.serverName, this.serverPort));
         }
         else
         {
-            this.displayGuiScreen(new MainMenu());
+            this.displayGuiScreen(new NewMainMenu());
         }
 
         this.renderEngine.deleteTexture(this.mojangLogo);
@@ -979,14 +980,14 @@ public class Minecraft implements IThreadListener, IPlayerUsage
 
         if (guiScreenIn == null && this.theWorld == null)
         {
-            guiScreenIn = new MainMenu();
+            guiScreenIn = new NewMainMenu();
         }
         else if (guiScreenIn == null && this.thePlayer.getHealth() <= 0.0F)
         {
             guiScreenIn = new GuiGameOver();
         }
 
-        if (guiScreenIn instanceof MainMenu )
+        if (guiScreenIn instanceof NewMainMenu)
         {
             this.gameSettings.showDebugInfo = false;
             this.ingameGUI.getChatGUI().clearChatMessages();

@@ -32,7 +32,7 @@ public class Insults extends Module {
             if ((cp21.contains("Intent") || cp21.contains("intent")|| cp21.contains("INTENT")) && !cp21.contains("watch me ddosing intent from my home ip (reel)")) {
                 mc.thePlayer.sendChatMessage("watch me ddosing intent from my home ip (reel)");
             }
-            if ((cp21.contains("Killed by") || cp21.contains("killed by")|| cp21.contains("KILLED BY")) && !cp21.contains("bipas client > you")) {
+            if ((cp21.contains("Killed by") || cp21.contains("killed by " + mc.thePlayer.getName() )|| cp21.contains("KILLED BY" + mc.thePlayer.getName() )) && !cp21.contains("bipas client > you")) {
                 mc.thePlayer.sendChatMessage("bipas client > you");
             }
         }

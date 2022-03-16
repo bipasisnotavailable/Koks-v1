@@ -3,6 +3,7 @@ package net.minecraft.client.gui;
 import java.io.IOException;
 
 import koks.gui.mainmenu.MainMenu;
+import koks.gui.mainmenu.NewMainMenu;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;
@@ -60,12 +61,12 @@ public class GuiIngameMenu extends GuiScreen
 
                 if (flag)
                 {
-                    this.mc.displayGuiScreen(new MainMenu());
+                    this.mc.displayGuiScreen(new NewMainMenu());
                 }
                 else if (flag1)
                 {
                     RealmsBridge realmsbridge = new RealmsBridge();
-                    realmsbridge.switchToRealms(new MainMenu());
+                    realmsbridge.switchToRealms(new NewMainMenu());
                 }
                 else
                 {

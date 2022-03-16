@@ -19,6 +19,9 @@ import java.awt.*;
  */
 public class RenderUtils {
 
+    public static void drawImage(int i, int i1, int i2, int i3, int width, int height, int width1, int height1) {
+    }
+
     public void drawOutlineRect(float left, float top, float right, float bottom, int lineStrength, Color color) {
         GL11.glPushMatrix();
         GL11.glLineWidth(lineStrength);
@@ -60,7 +63,7 @@ public class RenderUtils {
         GL11.glScissor((int) (x * factor), (int) ((scaledResolution.getScaledHeight() - y2) * factor), (int) ((x2 - x) * factor), (int) ((y2 - y) * factor));
     }
 
-    public void drawImage(ResourceLocation resourceLocation, float x, float y, double pictureWidth, double pictureHeight, boolean grayedOut) {
+    public static void drawImage(ResourceLocation resourceLocation, float x, float y, double pictureWidth, double pictureHeight, boolean grayedOut) {
         GL11.glPushMatrix();
         if (grayedOut)
             GL11.glColor4f(0.5F, 0.5F, 0.5F, 1);
