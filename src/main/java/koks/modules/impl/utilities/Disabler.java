@@ -46,7 +46,7 @@ public class Disabler extends Module{
             setModuleInfo(mode.getSelectedMode());
             PacketEvent e = (PacketEvent)event;
             switch (mode.getSelectedMode()) {
-                case "BlocksMC combat":
+                case "BlocksMC Combat":
                     if (mc.thePlayer.ticksExisted % 100 == 0 && e.getPacket() instanceof C03PacketPlayer) {
                         double x = mc.thePlayer.posX,
                                 y = mc.thePlayer.posY,
