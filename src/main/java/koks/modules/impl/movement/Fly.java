@@ -40,7 +40,7 @@ public class Fly extends Module {
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "BlocksMC", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
@@ -49,6 +49,7 @@ public class Fly extends Module {
         Koks.getKoks().valueManager.addValue(modeValue);
         hypixelFly = new HypixelFly();
     }
+    public static boolean hurt = false;
 
     @Override
     public void onEvent(Event event) {
@@ -79,8 +80,8 @@ public class Fly extends Module {
                 case "NCPiston":
                     NCPiston();
                     break;
-                case "Verus":
-                    verus();
+                case "BlocksMC":
+                    BlocksMC();
                     break;
             }
         }
@@ -143,7 +144,7 @@ public class Fly extends Module {
         }
     }
 
-    public void verus() {
+    public void BlocksMC() {
         mc.thePlayer.onGround = true;
         mc.thePlayer.motionY = 0;
         mc.timer.timerSpeed = 1.0f;
@@ -216,12 +217,22 @@ public class Fly extends Module {
                     mc.thePlayer.jump();
                 matrixtick = 0;
                 break;
+            case "BlocksMC":
+                if(mc.thePlayer.onGround) {
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY + 3.0002,mc.thePlayer.posZ,false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY,mc.thePlayer.posZ,false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY,mc.thePlayer.posZ,true));
+                }else {
+                    hurt = true;
+                }
+                break;
         }
     }
 
     @Override
     public void onDisable() {
         switch (modeValue.getSelectedMode()) {
+
             case "MCCentral":
                 mc.thePlayer.motionX = 0;
                 mc.thePlayer.motionZ = 0;
@@ -243,6 +254,11 @@ public class Fly extends Module {
                 break;
             case "Matrix":
                 mc.timer.timerSpeed = 1;
+                break;
+            case "BlocksMC":
+                mc.thePlayer.motionX = 0;
+                hurt = false;
+                mc.thePlayer.motionZ = 0;
                 break;
         }
     }
