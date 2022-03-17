@@ -81,7 +81,7 @@ public class NewMainMenu extends GuiScreen implements GuiYesNoCallback{
 
     @Override
     public void initGui() {
-        String[] displayNames = new String[]{"Singleplayer", "Multiplayer", "Options", "themes", "Alt Manager", "Exit"};
+        String[] displayNames = new String[]{"Singleplayer", "Multiplayer", "Options", "Alt Manager", "Exit"};
         int offset = height / 2 - -30;
         for (int i = 0; i < displayNames.length; i++) {
             String name = displayNames[i];
@@ -127,7 +127,7 @@ public class NewMainMenu extends GuiScreen implements GuiYesNoCallback{
         }
 
         if (button.id == 3) {
-            this.mc.displayGuiScreen(new ThemeSelection());
+            //this.mc.displayGuiScreen(new ThemeSelection());
         }
 
         if (button.id == 4) {

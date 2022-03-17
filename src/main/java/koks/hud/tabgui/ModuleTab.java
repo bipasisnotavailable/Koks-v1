@@ -31,7 +31,7 @@ public class ModuleTab {
         this.currentModule = currentModule;
         this.categoryTab = categoryTab;
         switch (Koks.getKoks().getThemeCategory()) {
-            case NONE:
+            case REGULAR:
                 renderUtils.drawRect(7, x, y, x + width, y + height, categoryTab.moduleTabs.get(currentModule).getModule().equals(module) ? clientColor ? Koks.getKoks().client_color : new Color(0, 0, 0, 175) : new Color(0, 0, 0, 125));
                 Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(module.getModuleName(), x + (centeredString ? width / 2 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(module.getModuleName()) / 2 : 2), y + height / 2 - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2, categoryTab.moduleTabs.get(currentModule).getModule().equals(module) ? module.isToggled() ? Koks.getKoks().client_color.brighter().getRGB() : -1 : module.isToggled() ? Koks.getKoks().client_color.getRGB() : -1);
                 break;
@@ -49,7 +49,7 @@ public class ModuleTab {
         this.currentModule = currentModule;
         this.categoryTab = categoryTab;
         switch (Koks.getKoks().getThemeCategory()) {
-            case NONE:
+            case REGULAR:
                 renderUtils.drawRect(7, x, y, x + width, y + height, categoryTab.moduleTabs.get(currentModule).getModule().equals(module) ? clientColor ? Koks.getKoks().client_color : new Color(0, 0, 0, 175) : new Color(0, 0, 0, 125));
                 Minecraft.getMinecraft().fontRendererObj.drawStringWithShadow(module.getModuleName(), x + (centeredString ? width / 2 - Minecraft.getMinecraft().fontRendererObj.getStringWidth(module.getModuleName()) / 2 : 2), y + height / 2 - Minecraft.getMinecraft().fontRendererObj.FONT_HEIGHT / 2, categoryTab.moduleTabs.get(currentModule).getModule().equals(module) ? module.isToggled() ? Koks.getKoks().client_color.brighter().getRGB() : -1 : module.isToggled() ? Koks.getKoks().client_color.getRGB() : -1);
                 break;

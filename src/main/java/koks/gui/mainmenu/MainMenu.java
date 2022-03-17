@@ -123,9 +123,9 @@ public class MainMenu extends GuiScreen {
                     case "Altmanager":
                         mc.displayGuiScreen(new GuiAltLogin(this));
                         break;
-                    case "Themes":
-                        this.mc.displayGuiScreen(new ThemeSelection());
-                        break;
+                    //case "Themes":
+                        //this.mc.displayGuiScreen(new ThemeSelection());
+                        //break;
                     case "Settings":
                         mc.displayGuiScreen(new GuiOptions(this, mc.gameSettings));
                         break;

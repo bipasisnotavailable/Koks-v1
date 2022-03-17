@@ -44,12 +44,12 @@ public class Suicide extends Theme {
     public void waterMarkDesign() {
         GL11.glPushMatrix();
         GL11.glScaled(3, 3, 3);
-        mc.fontRendererObj.drawStringWithShadow("K", 1, 1, Color.YELLOW.getRGB());
+        mc.fontRendererObj.drawStringWithShadow("B", 1, 1, Color.YELLOW.getRGB());
         GL11.glPopMatrix();
 
         GL11.glPushMatrix();
         GL11.glScaled(2, 2, 2);
-        mc.fontRendererObj.drawStringWithShadow("oks", 11, 5, Color.YELLOW.getRGB());
+        mc.fontRendererObj.drawStringWithShadow("ipas", 11, 5, Color.YELLOW.getRGB());
         GL11.glPopMatrix();
     }
 

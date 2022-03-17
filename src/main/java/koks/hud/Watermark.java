@@ -1,7 +1,7 @@
 package koks.hud;
 
 import koks.Koks;
-import koks.modules.impl.utilities.HUD;
+import koks.modules.impl.visuals.HUD;
 import koks.utilities.ColorUtil;
 import koks.utilities.DeltaTime;
 import koks.utilities.RenderUtils;

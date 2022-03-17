@@ -50,7 +50,7 @@ public class ThemeSelection extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) throws IOException {
         if (button.id == 2020) {
-            koks.setThemeCategory(Theme.ThemeCategory.NONE);
+            koks.setThemeCategory(Theme.ThemeCategory.REGULAR);
         }
         for (int i = 0; i < koks.themeManager.getThemeList().size(); i++) {
             if (button.id == i) {

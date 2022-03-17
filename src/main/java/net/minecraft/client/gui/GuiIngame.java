@@ -10,10 +10,8 @@ import java.util.Random;
 
 import koks.Koks;
 import koks.event.impl.EventRender2D;
-import koks.event.impl.KeyPressEvent;
 import koks.hud.CrossHair;
-import koks.modules.impl.movement.Sprint;
-import koks.modules.impl.utilities.HUD;
+import koks.modules.impl.visuals.HUD;
 import koks.utilities.DeltaTime;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;

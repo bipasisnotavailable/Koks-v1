@@ -1,12 +1,8 @@
 package koks.files.impl;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import koks.Koks;
 import koks.files.Files;
-import koks.gui.customhud.valuehudsystem.components.CheckBox;
 import koks.modules.Module;
-import koks.modules.impl.utilities.HUD;
-import koks.utilities.value.ColorPicker;
 import koks.utilities.value.Value;
 import koks.utilities.value.values.BooleanValue;
 import koks.utilities.value.values.ModeValue;
@@ -14,8 +10,6 @@ import koks.utilities.value.values.NumberValue;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
-import java.text.NumberFormat;
-import java.util.Arrays;
 
 /**
  * @author avox | lmao | kroko

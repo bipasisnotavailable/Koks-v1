@@ -1,22 +1,17 @@
 package koks.manager;
 
 import koks.Koks;
-import koks.files.FileManager;
 import koks.modules.Module;
 import koks.modules.impl.utilities.ClickGUI;
-import koks.modules.impl.utilities.HUD;
+import koks.modules.impl.visuals.HUD;
 import koks.utilities.value.Value;
 import koks.utilities.value.values.BooleanValue;
 import koks.utilities.value.values.ModeValue;
 import koks.utilities.value.values.NumberValue;
 import net.minecraft.client.Minecraft;
-import org.lwjgl.input.Keyboard;
 
 import java.io.*;
-import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.ArrayList;
-import java.util.Objects;
 
 /**
  * @author avox | lmao | kroko

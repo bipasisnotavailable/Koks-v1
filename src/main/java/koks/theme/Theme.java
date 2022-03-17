@@ -101,7 +101,7 @@ public abstract class Theme {
         PERFORMANCE,
         SUICIDE,
         MODERN,
-        NONE
+        REGULAR
     }
 
     public ThemeCategory getThemeCategory() {

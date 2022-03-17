@@ -54,7 +54,7 @@ public class CategoryTab {
         }
 
         switch (Koks.getKoks().getThemeCategory()) {
-            case NONE:
+            case REGULAR:
                 this.longestWidth = false;
                 this.moduleTabs.forEach(moduleTab -> {
                     if (Minecraft.getMinecraft().fontRendererObj.getStringWidth(moduleTab.getModule().getModuleName()) > longestWidth[0])
@@ -165,7 +165,7 @@ public class CategoryTab {
         }
 
         switch (Koks.getKoks().getThemeCategory()) {
-            case NONE:
+            case REGULAR:
                 this.longestWidth = false;
                 this.moduleTabs.forEach(moduleTab -> {
                     if (Minecraft.getMinecraft().fontRendererObj.getStringWidth(moduleTab.getModule().getModuleName()) > longestWidth[0])
