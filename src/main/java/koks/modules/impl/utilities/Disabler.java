@@ -32,7 +32,7 @@ public class Disabler extends Module{
     public static List<Packet> keepAlives;
     public double x,y,z;
 
-    public ModeValue<String> mode = new ModeValue<>("Mode", "BlocksMC", new String[]{"BlocksMC"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "BlocksMC combat", new String[]{"BlocksMC combat"}, this);
 
     public Disabler() {
         super("Disabler", "Disable anticheats", Module.Category.PLAYER);
@@ -46,7 +46,7 @@ public class Disabler extends Module{
             setModuleInfo(mode.getSelectedMode());
             PacketEvent e = (PacketEvent)event;
             switch (mode.getSelectedMode()) {
-                case "BlocksMC":
+                case "BlocksMC combat":
                     if (mc.thePlayer.ticksExisted % 100 == 0 && e.getPacket() instanceof C03PacketPlayer) {
                         double x = mc.thePlayer.posX,
                                 y = mc.thePlayer.posY,
@@ -62,6 +62,7 @@ public class Disabler extends Module{
 
     @Override
     public void onEnable() {
+
 
     }
 
