@@ -1,48 +1,63 @@
 package koks.modules.impl.utilities;
 
 import koks.event.Event;
-import koks.event.impl.PacketEvent;
+import koks.event.impl.EventUpdate;
 import koks.modules.Module;
+import koks.utilities.TimeUtil;
 import koks.utilities.value.values.ModeValue;
-import net.minecraft.client.Minecraft;
+import net.minecraft.network.Packet;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C00PacketKeepAlive;
 import net.minecraft.network.play.client.C03PacketPlayer;
+import net.minecraft.network.play.client.C0BPacketEntityAction;
 import net.minecraft.network.play.client.C0FPacketConfirmTransaction;
-import net.minecraft.network.play.server.S32PacketConfirmTransaction;
-import org.omg.CORBA.INTERNAL;
+import net.minecraft.network.play.server.S08PacketPlayerPosLook;
+import koks.utilities.TimerUtil;
+import koks.event.impl.*;
 
-import java.util.Random;
 
-/**
- * @author avox | lmao | kroko
- * @created on 04.09.2020 : 16:39
- */
-public class Disabler extends Module {
+public class Disabler extends Module{
+    public TimerUtil timer = new TimerUtil();
+    public static List<Packet> transactions;
+    public static List<Packet> keepAlives;
+    public double x,y,z;
 
-    public ModeValue<String> mode = new ModeValue<String>("Mode", "Hypixel", new String[]{"Hypixel"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "BlocksMC", new String[]{"BlocksMC"}, this);
 
     public Disabler() {
-        super("Disabler", "You disable the anticheat", Category.UTILITIES);
+        super("Disabler", "Disable anticheats", Module.Category.PLAYER);
+        ArrayList<String> modes = new ArrayList<>();
         addValue(mode);
     }
 
     @Override
     public void onEvent(Event event) {
-        if (event instanceof PacketEvent) {
-            if (mode.getSelectedMode().equalsIgnoreCase("Hypixel")) {
-                if (((PacketEvent) event).getType() == PacketEvent.Type.RECIVE) {
-                    if (Minecraft.getMinecraft().getCurrentServerData().serverIP.contains("hypixel") && Minecraft.getMinecraft().theWorld != null && Minecraft.getMinecraft().thePlayer != null) {
-
-                        if (((PacketEvent) event).getPacket() instanceof S32PacketConfirmTransaction) {
-                            final S32PacketConfirmTransaction s32PacketConfirmTransaction = (S32PacketConfirmTransaction) ((PacketEvent) event).getPacket();
-                            if (s32PacketConfirmTransaction.getActionNumber() < 0) {
-                                event.setCanceled(true);
-                            }
-                        }
+        if (event instanceof EventUpdate) {
+            setModuleInfo(mode.getSelectedMode());
+            PacketEvent e = (PacketEvent)event;
+            switch (mode.getSelectedMode()) {
+                case "BlocksMC":
+                    if (mc.thePlayer.ticksExisted % 100 == 0 && e.getPacket() instanceof C03PacketPlayer) {
+                        double x = mc.thePlayer.posX,
+                                y = mc.thePlayer.posY,
+                                z = mc.thePlayer.posZ;
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(x, y - 14.36D, z, false));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
                     }
-                }
+                    break;
             }
         }
+
     }
 
     @Override

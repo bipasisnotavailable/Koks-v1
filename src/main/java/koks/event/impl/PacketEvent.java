@@ -32,4 +32,5 @@ public class PacketEvent extends Event {
     public enum Type {
         RECIVE, SEND;
     }
+
 }
