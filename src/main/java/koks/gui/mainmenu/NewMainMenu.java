@@ -127,15 +127,11 @@ public class NewMainMenu extends GuiScreen implements GuiYesNoCallback{
         }
 
         if (button.id == 3) {
-            //this.mc.displayGuiScreen(new ThemeSelection());
-        }
-
-        if (button.id == 4) {
             mc.displayGuiScreen(new GuiAltLogin(this));
 
         }
 
-        if (button.id == 5) {
+        if (button.id == 4) {
             this.mc.shutdown();
         }
 
