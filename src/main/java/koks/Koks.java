@@ -63,7 +63,6 @@ public class Koks {
     private Theme.ThemeCategory themeCategory = Theme.ThemeCategory.JELLO;
 
     public ISound koksSound;
-
     public ModuleManager moduleManager;
     public ValueHUDManager valueHUDManager;
     public ValueManager valueManager;
