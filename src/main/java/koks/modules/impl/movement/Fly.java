@@ -11,19 +11,11 @@ import koks.modules.impl.visuals.Animations;
 import koks.utilities.MovementUtil;
 import koks.utilities.RandomUtil;
 import koks.utilities.TimeUtil;
+import koks.utilities.Timer;
 import koks.utilities.value.values.ModeValue;
 import koks.utilities.value.values.NumberValue;
-import net.minecraft.block.Block;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C07PacketPlayerDigging;
-import net.minecraft.network.play.client.C08PacketPlayerBlockPlacement;
-import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentText;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.Vec3;
-
 import java.util.ArrayList;
 
 /**
@@ -32,6 +24,7 @@ import java.util.ArrayList;
  */
 public class Fly extends Module {
 
+    Timer timer = new Timer();
     private final ArrayList<Packet> packets = new ArrayList<>();
     private int stage;
     private int glidedelay;
@@ -40,11 +33,11 @@ public class Fly extends Module {
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "BlocksMC", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
-        super("Fly", "You are very fliegen brr", Category.MOVEMENT);
+        super("Fly", "Flight", Category.MOVEMENT);
         addValue(aac322boost);
         Koks.getKoks().valueManager.addValue(modeValue);
         hypixelFly = new HypixelFly();
@@ -80,8 +73,8 @@ public class Fly extends Module {
                 case "NCPiston":
                     NCPiston();
                     break;
-                case "BlocksMC":
-                    BlocksMC();
+                case "Verus":
+                    Verus();
                     break;
             }
         }
@@ -144,11 +137,18 @@ public class Fly extends Module {
         }
     }
 
-    public void BlocksMC() {
-        mc.thePlayer.onGround = true;
-        mc.thePlayer.motionY = 0;
-        mc.timer.timerSpeed = 1.0f;
+    public void Verus() {
+        if(timer.hasTimeElapsed(545, true)) {
+            mc.thePlayer.jump();
+            mc.thePlayer.onGround = true;
+            mc.timer.timerSpeed = 1F;
+        }
     }
+
+
+
+
+
 
     public void mccentral2() {
         if (mc.gameSettings.keyBindJump.isKeyDown())
@@ -217,14 +217,7 @@ public class Fly extends Module {
                     mc.thePlayer.jump();
                 matrixtick = 0;
                 break;
-            case "BlocksMC":
-                if(mc.thePlayer.onGround) {
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY + 3.0002,mc.thePlayer.posZ,false));
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY,mc.thePlayer.posZ,false));
-                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX,mc.thePlayer.posY,mc.thePlayer.posZ,true));
-                }else {
-                    hurt = true;
-                }
+            case "Verus":
                 break;
         }
     }
@@ -255,10 +248,7 @@ public class Fly extends Module {
             case "Matrix":
                 mc.timer.timerSpeed = 1;
                 break;
-            case "BlocksMC":
-                mc.thePlayer.motionX = 0;
-                hurt = false;
-                mc.thePlayer.motionZ = 0;
+            case "Verus":
                 break;
         }
     }

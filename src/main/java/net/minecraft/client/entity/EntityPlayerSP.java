@@ -813,4 +813,10 @@ public class EntityPlayerSP extends AbstractClientPlayer {
             this.sendPlayerAbilities();
         }
     }
+
+    public void setz(double zDist) {
+    }
+
+    public void setX(double xDist) {
+    }
 }

@@ -1,6 +1,6 @@
 package koks.event;
 
-public class Event {
+public class Event<T> {
 
     private boolean canceled;
 
