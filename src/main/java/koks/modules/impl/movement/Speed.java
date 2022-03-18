@@ -4,7 +4,10 @@ import koks.Koks;
 import koks.event.Event;
 import koks.event.impl.EventUpdate;
 import koks.modules.Module;
+import koks.modules.impl.utilities.Wrapper;
 import koks.utilities.MovementUtil;
+import koks.utilities.SpeedUtil;
+import koks.utilities.Timer;
 import koks.utilities.value.values.ModeValue;
 import net.minecraft.item.ItemSword;
 
@@ -13,10 +16,12 @@ import net.minecraft.item.ItemSword;
  * @created on 02.09.2020 : 21:15
  */
 public class Speed extends Module {
-    public ModeValue<String> mode = new ModeValue<>("Mode", "Mineplex", new String[]{"Mineplex", "AAC 3.2.2", "Hypixel", "MCCentral", "Minemora"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "Mineplex", new String[]{"Mineplex", "AAC 3.2.2", "Hypixel", "MCCentral", "Minemora", "Verus"}, this);
     public boolean canSpeed;
     public MovementUtil movementUtil = new MovementUtil();
     public TargetStrafe targetStrafe = new TargetStrafe();
+    Timer timer = new Timer();
+    boolean isWalking = false;
 
     public Speed() {
         super("Speed", "you are fast af boyy", Category.MOVEMENT);
@@ -34,7 +39,7 @@ public class Speed extends Module {
                 break;
             case "Mineplex":
                 if (targetStrafe.allowStrafing()) {
-                    if(mc.thePlayer.onGround)
+                    if (mc.thePlayer.onGround)
                         mc.thePlayer.motionY = 0.42;
                     targetStrafe.strafe(event, 0.4543);
                 }
@@ -90,17 +95,63 @@ public class Speed extends Module {
                     }
                     movementUtil.setSpeed(0.45F);
                     break;
-                case "Minemora":
-                    if (mc.gameSettings.keyBindForward.isKeyDown()) {
-                        if (mc.thePlayer.onGround) {
-                            mc.thePlayer.jump();
-                            movementUtil.setSpeed(0.42F);
+                case "Verus":
+                    Wrapper.mc.timer.timerSpeed = 1F;
+                    if(isWalking && Wrapper.mc.thePlayer.onGround) {
+                        if(timer.hasTimeElapsed(100, true)) {
+                            Wrapper.mc.thePlayer.jump();
                         }
+                    }
+                    if(Wrapper.mc.thePlayer.isSprinting()) {
+                        if(Wrapper.mc.thePlayer.onGround) {
+
+
+                            if(Wrapper.mc.thePlayer.moveForward > 0) {
+                                SpeedUtil.setSpeed(0.19F);
+                            } else {
+                                SpeedUtil.setSpeed(0.14F);
+                            }
+                        } else {
+                            if(Wrapper.mc.thePlayer.moveForward > 0) {
+                                SpeedUtil.setSpeed(0.295F);
+                            } else {
+                                SpeedUtil.setSpeed(0.29F);
+                            }
+
+                        }
+
+                    } else {
+                        if(Wrapper.mc.thePlayer.onGround) {
+
+                            //mc.thePlayer.jump();
+                            if(Wrapper.mc.thePlayer.moveForward > 0) {
+                                SpeedUtil.setSpeed(0.16F);
+                            } else {
+                                SpeedUtil.setSpeed(0.14F);
+                            }
+                        } else {
+                            if(Wrapper.mc.thePlayer.moveForward > 0) {
+                                SpeedUtil.setSpeed(0.25F);
+                            } else {
+                                SpeedUtil.setSpeed(0.2F);
+                            }
+
+                        }
+                    }
                         break;
+                        case "Minemora":
+                            if (mc.gameSettings.keyBindForward.isKeyDown()) {
+                                if (mc.thePlayer.onGround) {
+                                    mc.thePlayer.jump();
+                                    movementUtil.setSpeed(0.42F);
+                                }
+                                break;
+                            }
+
                     }
             }
         }
-    }
+
 
     @Override
     public void onEnable() {
