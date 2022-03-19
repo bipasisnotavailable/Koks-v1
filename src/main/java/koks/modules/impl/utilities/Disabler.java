@@ -32,7 +32,7 @@ public class Disabler extends Module{
     public static List<Packet> keepAlives;
     public double x,y,z;
 
-    public ModeValue<String> mode = new ModeValue<>("Mode", "BlocksMC combat", new String[]{"Verus combat"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "Verus combat", new String[]{"Verus combat"}, this);
 
     public Disabler() {
         super("Disabler", "Disable anticheats", Module.Category.PLAYER);

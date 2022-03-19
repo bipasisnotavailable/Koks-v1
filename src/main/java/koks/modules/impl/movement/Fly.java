@@ -3,15 +3,13 @@ package koks.modules.impl.movement;
 import koks.Koks;
 import koks.event.Event;
 import koks.event.impl.AnimationEvent;
+import koks.event.impl.EventPacket;
 import koks.event.impl.EventUpdate;
 import koks.event.impl.PacketEvent;
 import koks.modules.Module;
 import koks.modules.impl.movement.modes.HypixelFly;
 import koks.modules.impl.visuals.Animations;
-import koks.utilities.MovementUtil;
-import koks.utilities.RandomUtil;
-import koks.utilities.TimeUtil;
-import koks.utilities.Timer;
+import koks.utilities.*;
 import koks.utilities.value.values.ModeValue;
 import koks.utilities.value.values.NumberValue;
 import net.minecraft.network.Packet;
@@ -34,7 +32,7 @@ public class Fly extends Module {
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "Verusdmg", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
 
     public Fly() {
@@ -76,6 +74,9 @@ public class Fly extends Module {
                     break;
                 case "Verus":
                     Verus();
+                    break;
+                case "Verusdmg":
+                    Verusdmg();
                     break;
             }
         }
@@ -146,7 +147,30 @@ public class Fly extends Module {
         }
     }
 
+    public void Verusdmg() {
 
+        mc.thePlayer.motionY = 0.004f;
+
+        if(mc.thePlayer.hurtTime != 0) {
+            MoveUtil.strafe(0.7873d);
+        } else {
+            MoveUtil.strafe(0.4873d);
+        }
+
+        if(mc.gameSettings.keyBindJump.pressed) {
+//					mc.thePlayer.motionY = 0.1f;
+        } else if(mc.gameSettings.keyBindSneak.pressed) {
+            mc.thePlayer.motionY = -1;
+        }
+
+        if(mc.thePlayer.moveForward != 0 || mc.thePlayer.moveStrafing != 0) {
+
+        } else {
+            mc.thePlayer.motionX = 0;
+            mc.thePlayer.motionZ = 0;
+        }
+        mc.thePlayer.onGround = true;
+    }
 
 
 
@@ -221,6 +245,14 @@ public class Fly extends Module {
             case "Verus":
                 EnableHeight = mc.thePlayer.posY;
                 break;
+            case "Verusdmg":
+                if(mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, 3.0001, 0).expand(0, 0, 0)).isEmpty()) {
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.0001, mc.thePlayer.posZ, false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
+                }
+                mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.42, mc.thePlayer.posZ);
+                break;
         }
     }
 
@@ -251,6 +283,8 @@ public class Fly extends Module {
                 mc.timer.timerSpeed = 1;
                 break;
             case "Verus":
+                break;
+            case "Verusdmg":
                 break;
         }
     }
