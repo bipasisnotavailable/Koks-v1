@@ -28,6 +28,7 @@ public class Fly extends Module {
     private int glidedelay;
     private int matrixmotion;
     private int matrixtick;
+    private double EnableHeight;
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
@@ -139,10 +140,10 @@ public class Fly extends Module {
     }
 
     public void Verus() {
-        if(timer.hasTimeElapsed(545, true)) {
+        if(EnableHeight > mc.thePlayer.posY) {
             mc.thePlayer.jump();
             mc.thePlayer.onGround = true;
-            mc.timer.timerSpeed = 1F;
+            mc.thePlayer.fallDistance = 0;
         }
     }
 
@@ -242,6 +243,7 @@ public class Fly extends Module {
                 matrixtick = 0;
                 break;
             case "Verus":
+                EnableHeight = mc.thePlayer.posY;
                 break;
             case "Verusdmg":
                 if(mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, 3.0001, 0).expand(0, 0, 0)).isEmpty()) {
