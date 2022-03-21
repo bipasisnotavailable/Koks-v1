@@ -1,7 +1,7 @@
 package net.minecraft.client.renderer.entity;
 
-import koks.Koks;
-import koks.modules.impl.visuals.NameTags;
+import Bipas.Koks;
+import Bipas.modules.impl.visuals.NameTags;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;

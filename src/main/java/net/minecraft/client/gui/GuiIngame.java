@@ -8,11 +8,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Random;
 
-import koks.Koks;
-import koks.event.impl.EventRender2D;
-import koks.hud.CrossHair;
-import koks.modules.impl.visuals.HUD;
-import koks.utilities.DeltaTime;
+import Bipas.Koks;
+import Bipas.event.impl.EventRender2D;
+import Bipas.hud.CrossHair;
+import Bipas.modules.impl.visuals.HUD;
+import Bipas.utilities.DeltaTime;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;

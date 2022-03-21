@@ -1,8 +1,6 @@
 package net.minecraft.client.model;
 
-import com.sun.org.apache.xpath.internal.operations.Mod;
-import koks.Koks;
-import koks.event.impl.AnimationEvent;
+import Bipas.event.impl.AnimationEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;

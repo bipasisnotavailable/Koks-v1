@@ -15,9 +15,9 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.Map.Entry;
 
-import koks.Koks;
-import koks.event.impl.EventVelocity;
-import koks.event.impl.PacketEvent;
+import Bipas.Koks;
+import Bipas.event.impl.EventVelocity;
+import Bipas.event.impl.PacketEvent;
 import net.minecraft.block.Block;
 import net.minecraft.client.ClientBrandRetriever;
 import net.minecraft.client.Minecraft;

@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
 
-import koks.event.impl.JumpEvent;
+import Bipas.event.impl.JumpEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

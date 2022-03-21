@@ -1,7 +1,5 @@
 package net.minecraft.network;
 
-import koks.Koks;
-import koks.event.impl.PacketEvent;
 import net.minecraft.util.IThreadListener;
 
 public class PacketThreadUtil

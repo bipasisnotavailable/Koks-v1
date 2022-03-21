@@ -1,9 +1,8 @@
 package net.minecraft.client.model;
 
-import koks.Koks;
-import koks.event.impl.AnimationEvent;
+import Bipas.Koks;
+import Bipas.event.impl.AnimationEvent;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;

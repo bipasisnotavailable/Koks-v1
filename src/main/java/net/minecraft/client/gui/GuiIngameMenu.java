@@ -2,8 +2,7 @@ package net.minecraft.client.gui;
 
 import java.io.IOException;
 
-import koks.gui.mainmenu.MainMenu;
-import koks.gui.mainmenu.NewMainMenu;
+import Bipas.gui.mainmenu.NewMainMenu;
 import net.minecraft.client.gui.achievement.GuiAchievements;
 import net.minecraft.client.gui.achievement.GuiStats;
 import net.minecraft.client.multiplayer.WorldClient;

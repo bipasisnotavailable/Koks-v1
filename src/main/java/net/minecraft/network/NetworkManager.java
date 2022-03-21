@@ -34,8 +34,8 @@ import java.util.Queue;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import javax.crypto.SecretKey;
 
-import koks.Koks;
-import koks.event.impl.PacketEvent;
+import Bipas.Koks;
+import Bipas.event.impl.PacketEvent;
 import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.CryptManager;

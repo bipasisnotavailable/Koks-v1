@@ -1,14 +1,13 @@
 package net.minecraft.client.entity;
 
-import koks.Koks;
-import koks.command.Command;
-import koks.event.impl.AnimationEvent;
-import koks.event.impl.EventMove;
-import koks.event.impl.EventUpdate;
-import koks.event.impl.MotionEvent;
-import koks.modules.impl.movement.NoSlowdown;
-import koks.theme.ThemeSelection;
-import koks.utilities.value.SetVisibility;
+import Bipas.Koks;
+import Bipas.command.Command;
+import Bipas.event.impl.AnimationEvent;
+import Bipas.event.impl.EventMove;
+import Bipas.event.impl.EventUpdate;
+import Bipas.event.impl.MotionEvent;
+import Bipas.modules.impl.movement.NoSlowdown;
+import Bipas.utilities.value.SetVisibility;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.MovingSoundMinecartRiding;
 import net.minecraft.client.audio.PositionedSoundRecord;

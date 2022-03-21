@@ -1,9 +1,9 @@
 package net.minecraft.client.renderer;
 
-import koks.Koks;
-import koks.event.impl.EventItemRenderer;
-import koks.modules.impl.combat.Aura;
-import koks.modules.impl.visuals.HitAnimation;
+import Bipas.Koks;
+import Bipas.event.impl.EventItemRenderer;
+import Bipas.modules.impl.combat.Aura;
+import Bipas.modules.impl.visuals.HitAnimation;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;

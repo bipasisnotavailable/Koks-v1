@@ -3,8 +3,8 @@ package net.minecraft.client.renderer.entity;
 import java.util.List;
 import java.util.concurrent.Callable;
 
-import koks.Koks;
-import koks.event.impl.EffectTextureEvent;
+import Bipas.Koks;
+import Bipas.event.impl.EffectTextureEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDirt;
 import net.minecraft.block.BlockDoublePlant;

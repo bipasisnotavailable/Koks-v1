@@ -5,9 +5,9 @@ import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.Callable;
 
-import koks.Koks;
-import koks.event.impl.MoveFlyingEvent;
-import koks.event.impl.SafeWalkEvent;
+import Bipas.Koks;
+import Bipas.event.impl.MoveFlyingEvent;
+import Bipas.event.impl.SafeWalkEvent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
