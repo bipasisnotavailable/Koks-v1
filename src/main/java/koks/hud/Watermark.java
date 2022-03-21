@@ -25,6 +25,7 @@ public class Watermark {
     private final Minecraft mc = Minecraft.getMinecraft();
     private final FontRenderer fr = Minecraft.getMinecraft().fontRendererObj;
     private final ResourceLocation resourceLocation = new ResourceLocation("client/generals/watermark.png");
+    private final ResourceLocation resourceLocation2 = new ResourceLocation("client/generals/yoshispin.gif");
 
     private final RenderUtils renderUtils = new RenderUtils();
     private ColorUtil colorUtil;
@@ -61,7 +62,7 @@ public class Watermark {
 
                 String render = name + " §7(" + time + ")";
                 fr.drawStringWithShadow(render, 82 / 2 - fr.getStringWidth(render) / 2, 8, Koks.getKoks().client_color.getRGB());
-            } else if (Koks.getKoks().moduleManager.getModule(HUD.class).watermarkStyle.getSelectedMode().equals("Custom with Shadow")) {
+            } else if (Koks.getKoks().moduleManager.getModule(HUD.class).watermarkStyle.getSelectedMode().equals("funni")) {
 
                 GL11.glPushMatrix();
                 GlStateManager.disableAlpha();
@@ -74,6 +75,18 @@ public class Watermark {
                 GlStateManager.disableBlend();
                 GL11.glPopMatrix();
             }
+        } else if (Koks.getKoks().moduleManager.getModule(HUD.class).watermarkStyle.getSelectedMode().equals("Yoshi spin")) {
+
+            GL11.glPushMatrix();
+            GlStateManager.disableAlpha();
+            GlStateManager.enableBlend();
+            GL11.glEnable(GL11.GL_BLEND);
+            GL11.glColor4f(1, 1, 1, 1);
+            renderUtils.drawImage(resourceLocation2, -3, -5, 80, 80, false);
+            GL11.glDisable(GL11.GL_BLEND);
+            GlStateManager.enableAlpha();
+            GlStateManager.disableBlend();
+            GL11.glPopMatrix();
         }
     }
 

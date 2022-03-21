@@ -16,6 +16,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.client.C03PacketPlayer;
 import java.util.ArrayList;
 
+import static koks.utilities.StrafeUtil.SetMotion;
+
 /**
  * @author avox | lmao | kroko
  * @created on 04.09.2020 : 18:14
@@ -32,8 +34,20 @@ public class Fly extends Module {
     private final HypixelFly hypixelFly;
     private final TimeUtil timeUtil = new TimeUtil();
     private final MovementUtil movementUtil = new MovementUtil();
-    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "Verusdmg", "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
+    public final ModeValue<String> modeValue = new ModeValue<>("Mode", "Hypixel", new String[]{"Hypixel", "Verus", "Verusdmg", "VerusLagback",  "AAC3.2.2", "Minemora", "MCCentral", "MCCentral 2", "Matrix", "NCPiston"}, this);
     public final NumberValue<Integer> aac322boost = new NumberValue<Integer>("AAC3.2.2-Boost", 9, 10, 5, this);
+    private boolean verusB3733SpoofGround = false;
+
+
+
+
+    private int counter;
+
+    public boolean firstLagback = false;
+
+    public ArrayList<C03PacketPlayer> savedC03Packets = new ArrayList<>();
+
+
 
     public Fly() {
         super("Fly", "Flight", Category.MOVEMENT);
@@ -78,6 +92,10 @@ public class Fly extends Module {
                 case "Verusdmg":
                     Verusdmg();
                     break;
+                case "VerusLagback":
+                    VerusLagback();
+                    break;
+
             }
         }
 
@@ -145,6 +163,11 @@ public class Fly extends Module {
             mc.thePlayer.onGround = true;
             mc.thePlayer.fallDistance = 0;
         }
+    }
+    public void VerusLagback() {
+        SetMotion(6);
+
+
     }
 
     public void Verusdmg() {
@@ -246,15 +269,30 @@ public class Fly extends Module {
                 EnableHeight = mc.thePlayer.posY;
                 break;
             case "Verusdmg":
-                if(mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, 3.0001, 0).expand(0, 0, 0)).isEmpty()) {
+                if (mc.theWorld.getCollidingBoundingBoxes(mc.thePlayer, mc.thePlayer.getEntityBoundingBox().offset(0, 3.0001, 0).expand(0, 0, 0)).isEmpty()) {
                     mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY + 3.0001, mc.thePlayer.posZ, false));
                     mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
                     mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
                 }
                 mc.thePlayer.setPosition(mc.thePlayer.posX, mc.thePlayer.posY + 0.42, mc.thePlayer.posZ);
                 break;
+            case "VerusLagback":
+                mc.thePlayer.capabilities.allowFlying = true;
+                    mc.thePlayer.capabilities.isFlying = true;
+                    mc.thePlayer.motionY = 0;
+                    mc.thePlayer.onGround = true;
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 3.1, mc.thePlayer.posZ, false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY - 3.1, mc.thePlayer.posZ, false));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, true));
+                    mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(mc.thePlayer.posX, mc.thePlayer.posY, mc.thePlayer.posZ, false));
+
+                }
+
         }
-    }
+
 
     @Override
     public void onDisable() {
@@ -286,7 +324,13 @@ public class Fly extends Module {
                 break;
             case "Verusdmg":
                 break;
+            case "VerusLagback":
+                mc.thePlayer.capabilities.allowFlying = false;
+                mc.thePlayer.capabilities.isFlying = false;
+                mc.thePlayer.onGround = false;
+                break;
         }
     }
+
 
 }

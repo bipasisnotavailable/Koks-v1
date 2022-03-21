@@ -10,11 +10,8 @@ import koks.hud.ModuleList;
 import koks.hud.Watermark;
 import koks.modules.Module;
 import koks.theme.Theme;
-import koks.utilities.CustomFont;
 import koks.utilities.value.values.BooleanValue;
 import koks.utilities.value.values.ModeValue;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.FontRenderer;
 
 /**
  * @author avox | lmao | kroko
@@ -32,7 +29,7 @@ public class HUD extends Module {
     private BooleanValue<Boolean> tabGUICenteredString = new BooleanValue<>("Centered String", true, this);
 
     private BooleanValue<Boolean> shadowArrayList = new BooleanValue<>("Shadow", true, this);
-    public ModeValue<String> watermarkStyle = new ModeValue<>("Watermark Style", "Simple", new String[]{"Simple", "Custom with Shadow", "Mario Kart"}, this);
+    public ModeValue<String> watermarkStyle = new ModeValue<>("Watermark Style", "Simple", new String[]{"Simple", "funni", "Mario Kart"}, this);
     public BooleanValue<Boolean> customCrossHair = new BooleanValue<>("CrossHair", false, this);
 
     public ModeValue<String> tabGuiSettings = new ModeValue<>("TabGui Settings", new BooleanValue[]{tabGUI, tabGUI_shadow, tabGUI_client_color, tabGUICenteredString}, this);
@@ -108,11 +105,12 @@ public class HUD extends Module {
                     moduleList.drawList(shadowArrayList.isToggled());
                     watermark.drawWatermark();
                     if (Koks.getKoks().tabGUI != null && tabGUI.isToggled()) {
-                        if (watermarkStyle.getSelectedMode().equals("Custom with Shadow"))
+                        if (watermarkStyle.getSelectedMode().equals("funni"))
                             Koks.getKoks().tabGUI.drawScreen(2, 70, 80, 15, this.tabGUI_shadow.isToggled(), tabGUI_client_color.isToggled(), tabGUICenteredString.isToggled());
                         else
                             Koks.getKoks().tabGUI.drawScreen(2, 20, 80, 15, this.tabGUI_shadow.isToggled(), tabGUI_client_color.isToggled(), tabGUICenteredString.isToggled());
                     }
+
                     if (customCrossHair.isToggled())
                         new CrossHair().drawCrosshair();
                     break;

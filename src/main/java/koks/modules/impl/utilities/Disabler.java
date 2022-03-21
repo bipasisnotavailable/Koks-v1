@@ -95,13 +95,9 @@ public class Disabler extends Module{
             PacketEvent e = (PacketEvent)event;
             switch (mode.getSelectedMode()) {
                 case "Verus Combat":
-                    if (mc.thePlayer.ticksExisted % 100 == 0 && e.getPacket() instanceof C03PacketPlayer) {
-                        double x = mc.thePlayer.posX,
-                                y = mc.thePlayer.posY,
-                                z = mc.thePlayer.posZ;
-                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(x, y - 14.36D, z, false));
-                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C04PacketPlayerPosition(x, y, z, false));
-                    }
+                        if(((EventPacket) event).getPacket() instanceof C0FPacketConfirmTransaction || ((EventPacket) event).getPacket() instanceof C00PacketKeepAlive) {
+                            event.setCanceled(true);
+                        }
                     break;
             }
         }
@@ -123,7 +119,5 @@ public class Disabler extends Module{
 
 
     }
-
-
 
 }
