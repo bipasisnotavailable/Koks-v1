@@ -9,9 +9,7 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import net.minecraft.network.play.client.C00PacketKeepAlive;
-import net.minecraft.network.play.client.C03PacketPlayer;
-import net.minecraft.network.play.client.C0FPacketConfirmTransaction;
+import net.minecraft.network.play.client.*;
 import net.minecraft.network.play.server.S08PacketPlayerPosLook;
 import Bipas.utilities.TimerUtil;
 import Bipas.event.impl.*;
@@ -52,7 +50,7 @@ public class Disabler extends Module{
     S08PacketPlayerPosLook packet;
 
 
-    public ModeValue<String> mode = new ModeValue<>("Mode", "Verus Combat", new String[]{"Verus combat"}, this);
+    public ModeValue<String> mode = new ModeValue<>("Mode", "Verus Combat", new String[]{"Verus combat", "Hypixel"}, this);
 
     public Disabler() {
         super("Disabler", "Disable anticheats", Module.Category.PLAYER);
@@ -70,6 +68,17 @@ public class Disabler extends Module{
                         if(((EventPacket) event).getPacket() instanceof C0FPacketConfirmTransaction || ((EventPacket) event).getPacket() instanceof C00PacketKeepAlive) {
                             event.setCanceled(true);
                         }
+                    break;
+                case "Hypixel":
+                    if (mc.thePlayer.ticksExisted % 69 == 0) {
+                        // credit to spec da savag yt
+                        // credit him if u use it
+                        mc.thePlayer.sendQueue.addToSendQueue(new C0CPacketInput());
+                        mc.thePlayer.sendQueue.addToSendQueue(new C0BPacketEntityAction(mc.thePlayer, C0BPacketEntityAction.Action.STOP_SLEEPING));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C0DPacketCloseWindow(mc.thePlayer.getEntityId()));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C02PacketUseEntity(mc.thePlayer, C02PacketUseEntity.Action.ATTACK));
+                        mc.thePlayer.sendQueue.addToSendQueue(new C03PacketPlayer.C05PacketPlayerLook(0, -91, true));
+                    }
                     break;
             }
         }
